@@ -1,9 +1,8 @@
-var App = require('./../app/controllers/app');
+var Data = require('./../app/controllers/data');
 
 
 /* GET home page. */
 module.exports = function (app) {
-
-    app.get('/', App.signature);
+    app.get('/', Data.index);
 }
 // module.exports = router;
