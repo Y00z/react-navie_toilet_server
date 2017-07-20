@@ -16,6 +16,19 @@ exports.tuijian = function (req, res) {
     res.render('tuijian', {});
 }
 
+exports.read = function (req, res) {
+    var type = req.query.type;
+    Data.findByType(type, function (err, datas) {
+        if (err) console.log(err)
+        var data = JSON.stringify(datas)
+        return res.send(data);
+        // return res.json({
+        //     success: true,
+        //     data: data
+        // })
+    })
+}
+
 exports.edit = function (req, res) {
     var type = req.query.type;
     console.log(type)

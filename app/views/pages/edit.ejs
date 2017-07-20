@@ -123,17 +123,18 @@
 </div>
 
 <div>
-    <table width="1000">
+    <table width="80%">
         <tr style="text-align:center;font-size:15px;height:30px;color:#fff;background-color:#36A0FB;border:0;">
             <td style="width:55px">编号</td>
             <td style="width:100px;">ID</td>
             <td>标题</td>
             <td>图片链接</td>
             <td>URL</td>
-            <td style="width:70px;">时间</td>
+            <td style="width:100px;">时间</td>
         </tr>
         <% data.forEach(function (item, index) { %>
         <tr style="text-align:center;height:26px;color:#4C4C4C;">
+            <td><%= index+1%></td>
             <td><%= item._id %></td>
             <td><%= item.title %></td>
             <td><%= item.img %></td>

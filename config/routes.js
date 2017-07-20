@@ -12,6 +12,8 @@ module.exports = function (app) {
 
     app.get('/edit',User.signinRequired, Data.edit);
 
+    app.get('/read',User.signinRequired, Data.read);
+
     app.post('/write',Data.write);
     app.post('/verify', User.verify);
 }
