@@ -16,6 +16,7 @@ var DataSchema = new Schema({
     },
     title: String,
     url: String,
+    type:String,
     meta: {
         createAt: {
             type: Date,

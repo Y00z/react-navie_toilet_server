@@ -1,5 +1,5 @@
 /**
- * Created by Yooz on 2017/07/19.
+ * Created by Yooz on 2016/11/23.
  */
 
 var express = require('express')
@@ -29,28 +29,32 @@ app.use(cookieSession({
         saveUninitialized: true
     })
 }))
-app.set("views", './views/pages')     //设置视图根目录
+app.set("views", './app/views/pages')     //设置视图根目录
 app.set('view engine', 'ejs') //设置视图的模版引擎
 // app.use(express.static(path.join(__dirname, 'bower_components')))
 app.use(express.static(path.join(__dirname, 'public')))
+//提交数据转换对象中间件
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
+//上传图片文件的中间件
+app.use(require('connect-multiparty')())
 var moment = require("moment");
 app.listen(port);
 console.log("成功启动:" + port)
 
 
 //在开发环境的时候
-if("development" === app.get('env')){
+if ("development" === app.get('env')) {
     //在控制台输出信息
-    app.set('showStackError' , true);
+    app.set('showStackError', true);
     //想看到的信息， 请求的类型， 请求的url路径，   请求的状态。
     app.use(morgan(':method :url :status'))
     //格式化代码。
     app.locals.pretty = true
-    mongoose.set('debug',true)
+    mongoose.set('debug', true)
 }
 
 //需要放在最后面
 //导入路由，传入app
-require('./routes/index')(app)
+require('./config/routes')(app)
+
