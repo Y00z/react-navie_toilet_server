@@ -12,9 +12,27 @@ exports.login = function (req, res) {
 }
 
 
-
 exports.tuijian = function (req, res) {
     res.render('tuijian', {});
+}
+
+exports.edit = function (req, res) {
+    var type = req.query.type;
+    console.log(type)
+    if (type) {
+        Data.findByType(type, function (err, datas) {
+            if (err) console.log(err)
+            console.log(datas)
+            return res.render('edit', {
+                data: datas
+            });
+        })
+    } else {
+        return res.send({
+            success: false,
+            info: '参数错误'
+        });
+    }
 }
 
 exports.write = function (req, res) {
@@ -52,5 +70,4 @@ exports.write = function (req, res) {
             })
         })
     }
-
 }

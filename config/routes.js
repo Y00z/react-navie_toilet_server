@@ -10,6 +10,8 @@ module.exports = function (app) {
 
     app.get('/tuijian',User.signinRequired, Data.tuijian);
 
+    app.get('/edit',User.signinRequired, Data.edit);
+
     app.post('/write',Data.write);
     app.post('/verify', User.verify);
 }

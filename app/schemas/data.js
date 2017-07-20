@@ -54,6 +54,12 @@ DataSchema.statics = {
             .findOne({"_id": id})
             .exec(cb)
     },
+    //通过type查询
+    findByType: function (type, cb) {
+        return this
+            .find({"type": type})
+            .exec(cb)
+    },
 }
 
 
