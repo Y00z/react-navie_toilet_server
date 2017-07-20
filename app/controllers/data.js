@@ -4,12 +4,18 @@
 var Data = require('./../models/data')
 
 exports.index = function (req, res) {
-    return res.send({
-        success: true,
-        msg: "厕所服务"
-    })
+    res.render('index', {});
 }
 
+exports.login = function (req, res) {
+    res.render('login', {});
+}
+
+
+
+exports.tuijian = function (req, res) {
+    res.render('tuijian', {});
+}
 
 exports.write = function (req, res) {
     var id = req.body._id
