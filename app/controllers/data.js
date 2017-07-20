@@ -22,7 +22,6 @@ exports.edit = function (req, res) {
     if (type) {
         Data.findByType(type, function (err, datas) {
             if (err) console.log(err)
-            console.log(datas)
             return res.render('edit', {
                 data: datas
             });
@@ -42,7 +41,6 @@ exports.write = function (req, res) {
     //要存入的对象
     var _data
     if (id) {
-        console.log("已经有了")
         Data.findByid(id, function (err, _data) {
             if (err) console.log(err)
             //提交上来的数据，替换掉数据库已经存在的数据。  (新的替换掉旧的)
@@ -52,20 +50,17 @@ exports.write = function (req, res) {
                 var result = JSON.stringify(data);
                 return res.send({
                     success: true,
-                    msg: "厕所服务11",
                     data: result
                 })
             })
         })
     } else {
-        console.log("新的")
         _data = new Data(dataObj)
         _data.save(function (err, data) {
             if (err) console.log(err)
             var result = JSON.stringify(data);
             return res.send({
                 success: true,
-                msg: "厕所服务11",
                 data: result
             })
         })
